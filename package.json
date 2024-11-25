@@ -1,0 +1,38 @@
+{
+  "name": "medsy",
+  "version": "1.8.0",
+  "private": true,
+  "author": "RedQ, Inc.",
+  "scripts": {
+    "clean": "pnpm -r run rimraf \"{.next,dist,build,node_modules}\" && rimraf node_modules",
+    "dev:classic": "pnpm --filter classic dev",
+    "dev:minimal": "pnpm --filter minimal dev",
+    "dev:modern": "pnpm --filter modern dev",
+    "build:classic": "pnpm --filter classic build",
+    "build:minimal": "pnpm --filter minimal build",
+    "build:modern": "pnpm --filter modern build",
+    "serve:classic": "pnpm --filter classic start",
+    "serve:minimal": "pnpm --filter minimal start",
+    "serve:modern": "pnpm --filter modern start",
+    "type:check:classic": "pnpm --filter classic type:check",
+    "type:check:minimal": "pnpm --filter minimal type:check",
+    "type:check:modern": "pnpm --filter modern type:check",
+    "deploy-vercel:classic": "cd packages/medsy-classic && vercel --prod",
+    "deploy-vercel:minimal": "cd packages/medsy-minimal && vercel --prod",
+    "deploy-vercel:modern": "cd packages/medsy-modern && vercel --prod",
+    "prepare": "husky install",
+    "type:check:all": "pnpm --filter classic type:check && pnpm --filter minimal type:check && pnpm --filter modern type:check"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,jsx,md,css}": [
+      "prettier --trailing-comma es5 --single-quote --write"
+    ]
+  }
+}
